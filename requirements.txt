@@ -1,0 +1,14 @@
+streamlit
+langchain
+langchain-community
+sentence-transformers
+faiss-cpu
+ollama
+docling
+paddleocr
+pandas
+markdownify
+scikit-learn         # For cosine similarity in semantic table search
+tqdm                 # Optional: for progress bars during table vectorization
+fuzzywuzzy
+python-Levenshtein
