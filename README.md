@@ -17,23 +17,27 @@ A powerful Streamlit-based PDF document assistant that uses RAG (Retrieval-Augme
 - **NLP/ML**: LangChain, Sentence Transformers
 - **Document Processing**: Docling, PaddleOCR
 - **Vector Database**: FAISS
+- **LLM Model**: Google Gemma-3-27b-it (via Hugging Face)
 - **LLM Integration**: Ollama support
 - **Data Processing**: Pandas, Scikit-learn
 
-## 📦 Installation
+## �📦 Installation
 
 1. **Clone the repository**:
+
    ```bash
-   git clone https://github.com/yourusername/intellidoc-assistant.git
-   cd intellidoc-assistant
+   git clone https://github.com/disha815/IntelliDoc-Assistant.git
+   cd IntelliDoc-Assistant
    ```
 
 2. **Create a virtual environment**:
+
    ```bash
    python -m venv rag-env
    ```
 
 3. **Activate the virtual environment**:
+
    - On Windows:
      ```bash
      rag-env\Scripts\activate
@@ -44,17 +48,25 @@ A powerful Streamlit-based PDF document assistant that uses RAG (Retrieval-Augme
      ```
 
 4. **Install dependencies**:
+
    ```bash
    pip install -r requirements.txt
    ```
 
-5. **Set up Ollama** (if using local LLM):
-   - Install Ollama from [ollama.ai](https://ollama.ai)
-   - Pull a suitable model: `ollama pull llama2`
+5. **Set up LLM Model**:
+   - **Option 1 - Hugging Face (Recommended)**: The application uses Google Gemma-3-27b-it model from Hugging Face
+     ```bash
+     # The model will be automatically downloaded when first used
+     # Ensure you have sufficient GPU memory or use CPU inference
+     ```
+   - **Option 2 - Ollama (Alternative)**:
+     - Install Ollama from [ollama.ai](https://ollama.ai)
+     - Pull a suitable model: `ollama pull llama2`
 
 ## 🚀 Usage
 
 1. **Start the application**:
+
    ```bash
    streamlit run app.py
    ```
@@ -95,23 +107,39 @@ The application can be configured through various parameters:
 
 - **Chunk Size**: Modify text splitting parameters in `utils/rag_pipeline.py`
 - **Vector Store**: Configure FAISS settings for your use case
-- **LLM Model**: Change the model in the QA chain configuration
+- **LLM Model**: Currently configured to use Google Gemma-3-27b-it from Hugging Face
+  - Model: `google/gemma-2-27b-it`
+  - Source: Hugging Face Transformers
+  - Supports both GPU and CPU inference
+  - Change model in `utils/rag_pipeline.py` for different LLM options
 - **OCR Settings**: Adjust PaddleOCR parameters in `utils/docling_extractor.py`
 
 ## 🧪 Key Components
 
 ### Document Processing
+
 - **Docling**: Advanced PDF parsing with layout preservation
 - **PaddleOCR**: OCR for image-based text extraction
 - **Table Extraction**: Automated table detection and processing
 
 ### RAG Pipeline
+
 - **Text Chunking**: Intelligent document segmentation
 - **Vector Embedding**: Sentence transformer-based embeddings
 - **Similarity Search**: FAISS-powered retrieval
 - **Question Answering**: LangChain-based QA system
 
+### LLM Integration
+
+- **Primary Model**: Google Gemma-3-27b-it
+  - **Size**: 27 billion parameters
+  - **Performance**: High-quality responses with strong reasoning capabilities
+  - **Context Length**: Supports long document contexts
+  - **Inference**: Optimized for both GPU and CPU deployment
+- **Alternative Models**: Easily configurable to use other Hugging Face models or Ollama
+
 ### User Interface
+
 - **Streamlit**: Modern, responsive web interface
 - **Real-time Processing**: Live document analysis
 - **Interactive Chat**: Conversational document exploration
